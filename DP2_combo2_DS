@@ -1,0 +1,12 @@
+module combo2(
+    input a,
+    input b,
+    input c,
+    output sum,
+    output co,
+    output mo
+    );
+    assign sum = a ^ b ^ c;
+    assign co = (a & b) | (c & ( a ^ b));
+    assign mo = b & (~c) | (a & c);
+endmodule
