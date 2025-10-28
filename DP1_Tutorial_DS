@@ -1,0 +1,10 @@
+module tutorial(
+    input a,
+    input b,
+    input c,
+    input x,
+    input y
+    );
+    assign x = a | b;
+    assign y = b & c;
+endmodule
