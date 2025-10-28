@@ -1,0 +1,25 @@
+module Sim2(
+    input a,
+    input b,
+    input c,
+    output x,
+    output y,
+    output z
+    );
+    
+    wire m0, m1, m2, m3, m4, m5, m6, m7;
+    
+    assign m0 = ~a & ~b & ~c;
+    assign m1 = ~a & ~b & c;
+    assign m2 = ~a & b & ~c;
+    assign m3 = ~a & b & c;
+    assign m4 = a & ~b & ~c;
+    assign m5 = a & ~b & c;
+    assign m6 = a & b & ~c;
+    assign m7 = a & b & c;
+    
+    assign x = m1 | m3;
+    assign y = m0 | m2 | m4;
+    assign z = m1 | m4 | m5 | m7;
+    
+endmodule
