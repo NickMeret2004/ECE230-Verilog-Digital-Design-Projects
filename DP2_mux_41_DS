@@ -1,0 +1,28 @@
+module inv (input a, output y);
+    assign y=~a;
+endmodule
+
+module gand (input a, input b, output y);
+    assign y= a & b;
+endmodule
+
+module gor (input a, input b, output y);
+    assign y= a | b;
+endmodule
+
+module mux_21(input a, input b, input s, output y);
+    wire invZ, and1Z, and2Z;
+    inv i1 (s, invZ);
+    gand a1 (a, invZ, and1Z);
+    gand a2 (b, s, and2Z);
+    gor o1 (and1Z, and2Z, y);
+endmodule
+
+module mux_41(
+input a, input b, input c, input d, input s0, input s1, output y
+    );
+    wire i1, i2;
+    mux_21 m1(.a(a), .b(b), .s(s0), .y(i1));
+    mux_21 m2(.a(c), .b(d), .s(s0), .y(i2));
+    mux_21 m3(.a(i1), .b(i2), .s(s1), .y(y));
+endmodule
