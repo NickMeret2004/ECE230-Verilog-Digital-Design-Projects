@@ -1,0 +1,19 @@
+module mux_41_tb;
+  reg A,B,C,D,S0,S1;
+  wire Y;
+
+  mux_41 dut(A,B,C,D,S0,S1,Y);
+
+  initial begin
+    A=0; B=0; C=0; D=0; S0=0; S1=0;
+  end
+
+  always #10  A = ~A;
+  always #20  B = ~B;
+  always #40  C = ~C;
+  always #80  D = ~D;
+  always #160 S0 = ~S0;
+  always #320 S1 = ~S1;
+
+  initial #1280 $finish;
+endmodule
